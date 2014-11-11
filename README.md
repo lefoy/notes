@@ -1,0 +1,4 @@
+notes
+=====
+
+Simple Notes Manager
