@@ -16,12 +16,27 @@ module.exports = function(grunt) {
         // App variables
         app: {
             src: 'app',
-            dest: 'dest'
+            dest: 'dest',
+            public: 'public',
+            sass: 'sass',
+            css: 'css',
+            img: 'img'
         }
     };
 
     // Tasks options
     var tasks = {
+
+        compass: {
+            dest: {
+                options: {
+                    sassDir: '<%= app.public %>/<%= app.sass %>',
+                    cssDir: '<%= app.public %>/<%= app.css %>',
+                    imagesDir: '<%= app.public %>/<%= app.img %>',
+                    environment: 'development'
+                }
+            }
+        },
 
         concat: {
             collections: {
@@ -105,7 +120,7 @@ module.exports = function(grunt) {
 
     // Default task
     grunt.registerTask('default', 'Default grunt task', function() {
-        grunt.task.run(['concat', 'replace']);
+        grunt.task.run(['compass', 'concat', 'replace']);
     });
 
     // Tasks aliases

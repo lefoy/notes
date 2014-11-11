@@ -5,7 +5,11 @@
     app.Collection.Note = Backbone.Collection.extend({
 
         model: app.Model.Note,
-        url: '/notes'
+        url: '/notes',
+
+        comparator: function(task) {
+            return -task.get('createdDate');
+        }
 
     });
 

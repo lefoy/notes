@@ -1,0 +1,81 @@
+@import "compass";
+$bg-body: #fff;
+$bg-notes: #ccc;
+
+body {
+    font-family: "Lato", Arial, sans-serif;
+    background-color: $bg-body;
+}
+
+#notes-wrapper {
+    // max-width: 960px;
+    // margin: 0 auto;
+    // padding: 20px;
+}
+
+.note {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: calc(20% - 20px);
+    margin: 15px 10px;
+    padding: 20px;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(#f9efaf, #f7e98d);
+    background: -moz-linear-gradient(#f9efaf, #f7e98d);
+    background: -o-linear-gradient(#f9efaf, #f7e98d);
+    background: -ms-linear-gradient(#f9efaf, #f7e98d);
+    background: linear-gradient(#f9efaf, #f7e98d);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-smoothing: subpixel-antialiased;
+    @include transition-property(box-shadow);
+    @include transition-duration(300ms);
+    &.is-expanded {
+        width: calc(40% - 20px);
+    }
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    resize: none;
+}
+
+.buttons {
+    margin-top: 10px;
+    button {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+        margin-left: 0;
+    }
+}
+
+button {
+    margin: 0 10px;
+    padding: 0;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    + button {
+        margin-left: 10px;
+    }
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.fa-file-archive-o {
+    position: relative;
+    top: -1px;
+    font-size: 1.3rem;
+}

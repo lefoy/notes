@@ -1,0 +1,87 @@
+/* line 5, ../sass/main.scss */
+body {
+  font-family: "Lato", Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* line 16, ../sass/main.scss */
+.note {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: calc(20% - 20px);
+  margin: 15px 10px;
+  padding: 20px;
+  border-radius: 3px;
+  background: -webkit-linear-gradient(#f9efaf, #f7e98d);
+  background: -moz-linear-gradient(#f9efaf, #f7e98d);
+  background: -o-linear-gradient(#f9efaf, #f7e98d);
+  background: -ms-linear-gradient(#f9efaf, #f7e98d);
+  background: linear-gradient(#f9efaf, #f7e98d);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-smoothing: subpixel-antialiased;
+  -moz-transition-property: box-shadow;
+  -o-transition-property: box-shadow;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+/* line 34, ../sass/main.scss */
+.note.is-expanded {
+  width: calc(40% - 20px);
+}
+
+/* line 39, ../sass/main.scss */
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+}
+
+/* line 50, ../sass/main.scss */
+.buttons {
+  margin-top: 10px;
+}
+/* line 52, ../sass/main.scss */
+.buttons button {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 0;
+}
+
+/* line 60, ../sass/main.scss */
+button {
+  margin: 0 10px;
+  padding: 0;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+/* line 68, ../sass/main.scss */
+button + button {
+  margin-left: 10px;
+}
+
+/* line 73, ../sass/main.scss */
+.title {
+  font-size: 1.5rem;
+}
+
+/* line 77, ../sass/main.scss */
+.fa-file-archive-o {
+  position: relative;
+  top: -1px;
+  font-size: 1.3rem;
+}

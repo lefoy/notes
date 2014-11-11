@@ -1,6 +1,11 @@
     <script type="text/template" id="tmpl_note">
-        <input type="text" class="title" name="title" value="<%= title %>">
-        <textarea class="content" name="content"><%= content %></textarea>
-        <button class="save">Save</button>
-        <button class="delete">Delete</button>
+        <div class="note-wrapper">
+            <textarea class="title expanding" name="title" rows="1"><%= title %></textarea>
+            <textarea class="content expanding" name="content" rows="1"><%= content %></textarea>
+            <div class="buttons">
+                <button class="save"><i class="fa fa-floppy-o"></i></button>
+                <button class="archive"><i class="fa fa-file-archive-o"></i></button>
+                <button class="delete"><i class="fa fa-trash-o"></i></button>
+            </div>
+        </div>
     </script>

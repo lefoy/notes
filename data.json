@@ -1,19 +1,80 @@
 {
   "notes": [
     {
-      "id": 1,
       "title": "Note 1",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, facere.",
-      "createdDate": "Mon Nov 10 2014 19:56:22 GMT-0500 (EST)",
+      "content": "Contenu de la note 1",
+      "createdDate": 1415720994915,
+      "isEditing": false,
       "isArchived": false,
-      "isEditing": false
+      "id": 1
     },
     {
-      "id": 2,
       "title": "Note 2",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, facere.",
-      "createdDate": "Mon Nov 09 2014 19:56:22 GMT-0500 (EST)",
-      "isArchived": false
+      "content": "Contenu de la note 2",
+      "createdDate": 1415721004227,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 2
+    },
+    {
+      "title": "Note 3",
+      "content": "Contenu de la note 3",
+      "createdDate": 1415721442124,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 3,
+      "isExpanded": true
+    },
+    {
+      "title": "Note 4",
+      "content": "Contenu de la note 4",
+      "createdDate": 1415721525400,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 4,
+      "isExpanded": true
+    },
+    {
+      "title": "Note 5",
+      "content": "Contenu de la note 5",
+      "createdDate": 1415721559045,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 5
+    },
+    {
+      "title": "Note 6",
+      "content": "Contenu de la note 6",
+      "createdDate": 1415721717345,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 6
+    },
+    {
+      "title": "Note 7",
+      "content": "Contenu de la note 7",
+      "createdDate": 1415721786778,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 7
+    },
+    {
+      "title": "Note 8",
+      "content": "Contenu de la note 8",
+      "createdDate": 1415722743418,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 8,
+      "isExpanded": false
+    },
+    {
+      "title": "Note 9 - Lorem ipsum dolor sit amet",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit iure delectus, incidunt atque, ab libero qui facilis esse sint autem tenetur. Nihil culpa consequuntur officia praesentium, asperiores magni fugit non.",
+      "createdDate": 1415722957134,
+      "isEditing": false,
+      "isArchived": false,
+      "id": 9,
+      "isExpanded": false
     }
   ]
 }
