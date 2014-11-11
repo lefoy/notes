@@ -10,12 +10,6 @@
             createdDate: '',
             isEditing: false,
             isArchived: false
-        },
-
-        toggle: function() {
-            this.save({
-                isArchived: !this.get('isArchived')
-            });
         }
 
     });

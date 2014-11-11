@@ -3,9 +3,10 @@
     {
       "id": 1,
       "title": "Note 1",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, reprehenderit.",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, facere.",
       "createdDate": "Mon Nov 10 2014 19:56:22 GMT-0500 (EST)",
-      "isArchived": false
+      "isArchived": false,
+      "isEditing": false
     },
     {
       "id": 2,

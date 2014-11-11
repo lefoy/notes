@@ -4,6 +4,8 @@
     </script>
 
     <script type="text/template" id="tmpl_note">
-        <h2><%= title %></h2>
-        <div class="note-content"><%= content %></div>
+        <input type="text" class="title" name="title" value="<%= title %>">
+        <textarea class="content" name="content"><%= content %></textarea>
+        <button class="save">Save</button>
+        <button class="delete">Delete</button>
     </script>
