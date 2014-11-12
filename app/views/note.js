@@ -6,34 +6,45 @@
         tagName: 'div',
         template: '#tmpl_note',
 
-        onRender: function() {
-            this.$el.addClass('note');
-
-            this.$el.find('textarea').each(function() {
-                expandTextarea(this);
-            }).on('input', function() {
-                expandTextarea(this);
+        initialize: function() {
+            var self = this;
+            this.on('render', function() {
+                window.setTimeout(function() {
+                    self.afterRender();
+                }, 1);
             });
         },
 
-        modelEvents: {
-            'change': 'render'
+        afterRender: function() {
+            var self = this;
+            this.$el.find('textarea').autosize({
+                append: '',
+                callback: this.updateLayout
+            }).on('input', function() {
+                waitForFinalEvent(function() {
+                    self.save();
+                }, 100, 'input');
+            });
+        },
+
+        onRender: function() {
+            this.$el.addClass('note');
         },
 
         events: {
-            'click .save': 'save',
-            'click .edit': 'edit',
             'click .delete': 'delete'
         },
 
-        save: function() {
-            var title = this.$('.title').val(),
-                content = this.$('.content').val();
-
-            if (title === '' || content === '') {
-                this.throwError();
-                return false;
+        updateLayout: function() {
+            if (window.masonry) {
+                window.masonry.reloadItems();
+                window.masonry.layout();
             }
+        },
+
+        save: function() {
+            var title = this.$('.title').val() || '...',
+                content = this.$('.content').val() || '...';
 
             this.model.save({
                 title: title,
@@ -44,16 +55,6 @@
 
         delete: function() {
             this.model.destroy();
-
-            if (window.masonry) {
-                window.masonry.reloadItems();
-                window.masonry.layout();
-            }
-        },
-
-        throwError: function() {
-            this.$el.css('outline', '1px solid red');
-            return false;
         }
 
     });

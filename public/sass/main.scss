@@ -7,12 +7,6 @@ body {
     background-color: $bg-body;
 }
 
-#notes-wrapper {
-    // max-width: 960px;
-    // margin: 0 auto;
-    // padding: 20px;
-}
-
 .note {
     position: relative;
     float: left;
@@ -31,8 +25,17 @@ body {
     font-smoothing: subpixel-antialiased;
     @include transition-property(box-shadow);
     @include transition-duration(300ms);
-    &.is-expanded {
-        width: calc(40% - 20px);
+    @media (max-width: 1600px) {
+        width: calc(25% - 20px);
+    }
+    @media (max-width: 1280px) {
+        width: calc(33.3333% - 20px);
+    }
+    @media (max-width: 960px) {
+        width: calc(50% - 20px);
+    }
+    @media (max-width: 767px) {
+        width: calc(100% - 20px);
     }
 }
 
@@ -48,7 +51,9 @@ textarea {
 }
 
 .buttons {
-    margin-top: 10px;
+    position: absolute;
+    right: 12px;
+    bottom: 15px;
     button {
         display: inline-block;
         vertical-align: middle;
@@ -71,11 +76,34 @@ button {
 }
 
 .title {
+    box-sizing: border-box;
+    margin: 0 0 8px;
     font-size: 1.5rem;
+}
+
+.content {
+    box-sizing: border-box;
+}
+
+.date {
+    margin: 0;
+    margin: 10px 0 0;
+    font-size: 0.9rem;
+    opacity: 0.3;
+    pointer: default;
 }
 
 .fa-file-archive-o {
     position: relative;
     top: -1px;
     font-size: 1.3rem;
+}
+
+.delete {
+    opacity: 0.3;
+    @include transition-property(all);
+    @include transition-duration(300ms);
+    &:hover {
+        opacity: 1;
+    }
 }

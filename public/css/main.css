@@ -4,7 +4,7 @@ body {
   background-color: #fff;
 }
 
-/* line 16, ../sass/main.scss */
+/* line 10, ../sass/main.scss */
 .note {
   position: relative;
   float: left;
@@ -30,12 +30,32 @@ body {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
 }
-/* line 34, ../sass/main.scss */
-.note.is-expanded {
-  width: calc(40% - 20px);
+@media (max-width: 1600px) {
+  /* line 10, ../sass/main.scss */
+  .note {
+    width: calc(25% - 20px);
+  }
+}
+@media (max-width: 1280px) {
+  /* line 10, ../sass/main.scss */
+  .note {
+    width: calc(33.3333% - 20px);
+  }
+}
+@media (max-width: 960px) {
+  /* line 10, ../sass/main.scss */
+  .note {
+    width: calc(50% - 20px);
+  }
+}
+@media (max-width: 767px) {
+  /* line 10, ../sass/main.scss */
+  .note {
+    width: calc(100% - 20px);
+  }
 }
 
-/* line 39, ../sass/main.scss */
+/* line 42, ../sass/main.scss */
 input,
 textarea {
   display: block;
@@ -47,11 +67,13 @@ textarea {
   resize: none;
 }
 
-/* line 50, ../sass/main.scss */
+/* line 53, ../sass/main.scss */
 .buttons {
-  margin-top: 10px;
+  position: absolute;
+  right: 12px;
+  bottom: 15px;
 }
-/* line 52, ../sass/main.scss */
+/* line 57, ../sass/main.scss */
 .buttons button {
   display: inline-block;
   vertical-align: middle;
@@ -59,7 +81,7 @@ textarea {
   margin-left: 0;
 }
 
-/* line 60, ../sass/main.scss */
+/* line 65, ../sass/main.scss */
 button {
   margin: 0 10px;
   padding: 0;
@@ -69,19 +91,52 @@ button {
   background: none;
   cursor: pointer;
 }
-/* line 68, ../sass/main.scss */
+/* line 73, ../sass/main.scss */
 button + button {
   margin-left: 10px;
 }
 
-/* line 73, ../sass/main.scss */
+/* line 78, ../sass/main.scss */
 .title {
+  box-sizing: border-box;
+  margin: 0 0 8px;
   font-size: 1.5rem;
 }
 
-/* line 77, ../sass/main.scss */
+/* line 84, ../sass/main.scss */
+.content {
+  box-sizing: border-box;
+}
+
+/* line 88, ../sass/main.scss */
+.date {
+  margin: 0;
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  opacity: 0.3;
+  pointer: default;
+}
+
+/* line 96, ../sass/main.scss */
 .fa-file-archive-o {
   position: relative;
   top: -1px;
   font-size: 1.3rem;
+}
+
+/* line 102, ../sass/main.scss */
+.delete {
+  opacity: 0.3;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+/* line 106, ../sass/main.scss */
+.delete:hover {
+  opacity: 1;
 }

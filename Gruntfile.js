@@ -95,6 +95,19 @@ module.exports = function(grunt) {
             }
         },
 
+        concurrent: {
+            serverWatch: {
+                tasks: ['exec:jsonServer', 'watch'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
+        },
+
+        exec: {
+            jsonServer: 'json-server data.json'
+        },
+
         replace: {
             templates: {
                 options: {
@@ -109,6 +122,24 @@ module.exports = function(grunt) {
                     }
                 }]
             }
+        },
+
+        watch: {
+            all: {
+                files: [
+                    '<%= app.src %>/collections/**/*',
+                    '<%= app.src %>/libs/**/*',
+                    '<%= app.src %>/models/**/*',
+                    '<%= app.src %>/routers/**/*',
+                    '<%= app.src %>/templates/**/*',
+                    '<%= app.src %>/views/**/*',
+                    '<%= app.src %>/app.js',
+                    '<%= app.src %>/init.js',
+                    '<%= app.src %>/helpers.js',
+                    '<%= app.public %>/<%= app.sass %>/**/*',
+                ],
+                tasks: ['build']
+            }
         }
 
     };
@@ -120,11 +151,13 @@ module.exports = function(grunt) {
 
     // Default task
     grunt.registerTask('default', 'Default grunt task', function() {
-        grunt.task.run(['compass', 'concat', 'replace']);
+        grunt.task.run(['concurrent:serverWatch']);
     });
 
-    // Tasks aliases
-    grunt.registerTask('build', ['default']);
+    // Build task
+    grunt.registerTask('build', 'Build grunt task', function() {
+        grunt.task.run(['compass', 'concat', 'replace']);
+    });
 
     // Load grunt config
     grunt.initConfig(config);

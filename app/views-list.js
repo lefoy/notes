@@ -10,22 +10,27 @@
         childView: app.View.Note,
         childViewContainer: 'div',
 
+        initialize: function() {
+            this.render();
+        },
+
         onRender: function() {
             this.$el.find('> div').addClass('masonry-wrapper');
-
-            window.setTimeout(function() {
-                $('.masonry-wrapper').masonry({
-                    columnWidth: 0,
-                    itemSelector: '.note'
-                });
-
-                window.masonry = $('.masonry-wrapper').data('masonry');
-            }, 2);
         },
 
         collectionEvents: {
-            'sort': 'updateLayout',
-            'sync': 'render'
+            'add': 'updateLayout',
+            'remove': 'updateLayout',
+            'fetch': 'afterFetch'
+        },
+
+        afterFetch: function() {
+            $('.masonry-wrapper').masonry({
+                columnWidth: 0,
+                itemSelector: '.note'
+            });
+
+            window.masonry = $('.masonry-wrapper').data('masonry');
         },
 
         events: {

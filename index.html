@@ -31,11 +31,10 @@
 
     <script type="text/template" id="tmpl_note">
         <div class="note-wrapper">
-            <textarea class="title expanding" name="title" rows="1"><%= title %></textarea>
-            <textarea class="content expanding" name="content" rows="1"><%= content %></textarea>
+            <textarea class="title expanding" name="title" rows="1" spellcheck="false"><%= title %></textarea>
+            <textarea class="content expanding" name="content" rows="1" spellcheck="false"><%= content %></textarea>
+            <p class="date"><%= moment(createdDate).fromNow() %></p>
             <div class="buttons">
-                <button class="save"><i class="fa fa-floppy-o"></i></button>
-                <button class="archive"><i class="fa fa-file-archive-o"></i></button>
                 <button class="delete"><i class="fa fa-trash-o"></i></button>
             </div>
         </div>
@@ -47,8 +46,9 @@
     <script type="text/javascript" src="app/libs/underscore.min.js"></script>
     <script type="text/javascript" src="app/libs/backbone.min.js"></script>
     <script type="text/javascript" src="app/libs/marionette.min.js"></script>
+    <script type="text/javascript" src="app/libs/moment.min.js"></script>
     <script type="text/javascript" src="app/libs/masonry.min.js"></script>
-    <script type="text/javascript" src="app/libs/expanding.js"></script>
+    <script type="text/javascript" src="app/libs/jquery.autosize.min.js"></script>
 
     <script type="text/javascript" src="app/helpers.js"></script>
     <script type="text/javascript" src="app/init.js"></script>
