@@ -9,11 +9,11 @@
         initialize: function() {
             var self = this;
 
-            //this.on('render', function() {
-            window.setTimeout(function() {
-                self.afterRender();
-            }, 1);
-            //});
+            this.on('render', function() {
+                window.setTimeout(function() {
+                    self.afterRender();
+                }, 1);
+            });
         },
 
         afterRender: function() {
