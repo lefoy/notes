@@ -8,7 +8,7 @@
         url: '/notes',
 
         comparator: function(task) {
-            return -task.get('createdDate');
+            return task.get('order');
         }
 
     });

@@ -8,22 +8,35 @@
 
         initialize: function() {
             var self = this;
-            this.on('render', function() {
-                window.setTimeout(function() {
-                    self.afterRender();
-                }, 1);
-            });
+
+            //this.on('render', function() {
+            window.setTimeout(function() {
+                self.afterRender();
+            }, 1);
+            //});
         },
 
         afterRender: function() {
             var self = this;
+
             this.$el.find('textarea').autosize({
                 append: '',
                 callback: this.updateLayout
-            }).on('input', function() {
+            });
+
+            this.$el.on('input', function() {
                 waitForFinalEvent(function() {
                     self.save();
-                }, 100, 'input');
+                }, 300, 'input');
+            });
+
+            window.shapeshift.on('ss-rearranged', function() {
+                console.log('save');
+                self.save();
+                waitForFinalEvent(function() {
+                    console.log('save:updateLayout');
+                    self.updateLayout();
+                }, 300, 'ss-rearranged');
             });
         },
 
@@ -36,19 +49,20 @@
         },
 
         updateLayout: function() {
-            if (window.masonry) {
-                window.masonry.reloadItems();
-                window.masonry.layout();
+            if (window.shapeshift) {
+                window.shapeshift.trigger('ss-rearrange');
             }
         },
 
         save: function() {
             var title = this.$('.title').val() || '...',
-                content = this.$('.content').val() || '...';
+                content = this.$('.content').val() || '...',
+                order = this.$el.index();
 
             this.model.save({
                 title: title,
                 content: content,
+                order: order,
                 isEditing: false
             });
         },

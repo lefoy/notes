@@ -4,16 +4,35 @@ $bg-notes: #ccc;
 
 body {
     font-family: "Lato", Arial, sans-serif;
+    font-size: 25px;
     background-color: $bg-body;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+}
+
+#notes-wrapper {
+    opacity: 0;
+    @include transition-property(opacity);
+    @include transition-duration(300ms);
+    .pace-done & {
+        opacity: 1;
+    }
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
 }
 
 .note {
-    position: relative;
-    float: left;
+    position: absolute;
     overflow: hidden;
     box-sizing: border-box;
-    width: calc(20% - 20px);
-    margin: 15px 10px;
+    width: 420px;
     padding: 20px;
     border-radius: 3px;
     background: -webkit-linear-gradient(#f9efaf, #f7e98d);
@@ -23,20 +42,6 @@ body {
     background: linear-gradient(#f9efaf, #f7e98d);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     font-smoothing: subpixel-antialiased;
-    @include transition-property(box-shadow);
-    @include transition-duration(300ms);
-    @media (max-width: 1600px) {
-        width: calc(25% - 20px);
-    }
-    @media (max-width: 1280px) {
-        width: calc(33.3333% - 20px);
-    }
-    @media (max-width: 960px) {
-        width: calc(50% - 20px);
-    }
-    @media (max-width: 767px) {
-        width: calc(100% - 20px);
-    }
 }
 
 input,
@@ -106,4 +111,27 @@ button {
     &:hover {
         opacity: 1;
     }
+}
+
+/** Loading */
+
+.pace {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-pointer-events: none;
+}
+
+.pace .pace-progress {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fafafa;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    -o-transition: width 0.5s;
+    transition: width 0.5s;
 }

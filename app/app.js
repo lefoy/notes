@@ -9,9 +9,7 @@ $(function() {
 
     app.notes.fetch({
         success: function(collection, response, options) {
-            //window.setTimeout(function() {
-                collection.trigger('fetch');
-            //}, 1);
+            collection.trigger('fetch');
         }
     });
 

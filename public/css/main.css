@@ -1,17 +1,45 @@
 /* line 5, ../sass/main.scss */
 body {
   font-family: "Lato", Arial, sans-serif;
+  font-size: 25px;
   background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
 }
 
-/* line 10, ../sass/main.scss */
-.note {
+/* line 17, ../sass/main.scss */
+#notes-wrapper {
+  opacity: 0;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+/* line 21, ../sass/main.scss */
+.pace-done #notes-wrapper {
+  opacity: 1;
+}
+
+/* line 26, ../sass/main.scss */
+.wrapper {
   position: relative;
-  float: left;
+  width: 100%;
+}
+
+/* line 31, ../sass/main.scss */
+.note {
+  position: absolute;
   overflow: hidden;
   box-sizing: border-box;
-  width: calc(20% - 20px);
-  margin: 15px 10px;
+  width: 420px;
   padding: 20px;
   border-radius: 3px;
   background: -webkit-linear-gradient(#f9efaf, #f7e98d);
@@ -21,41 +49,9 @@ body {
   background: linear-gradient(#f9efaf, #f7e98d);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-smoothing: subpixel-antialiased;
-  -moz-transition-property: box-shadow;
-  -o-transition-property: box-shadow;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -moz-transition-duration: 300ms;
-  -o-transition-duration: 300ms;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-}
-@media (max-width: 1600px) {
-  /* line 10, ../sass/main.scss */
-  .note {
-    width: calc(25% - 20px);
-  }
-}
-@media (max-width: 1280px) {
-  /* line 10, ../sass/main.scss */
-  .note {
-    width: calc(33.3333% - 20px);
-  }
-}
-@media (max-width: 960px) {
-  /* line 10, ../sass/main.scss */
-  .note {
-    width: calc(50% - 20px);
-  }
-}
-@media (max-width: 767px) {
-  /* line 10, ../sass/main.scss */
-  .note {
-    width: calc(100% - 20px);
-  }
 }
 
-/* line 42, ../sass/main.scss */
+/* line 47, ../sass/main.scss */
 input,
 textarea {
   display: block;
@@ -67,13 +63,13 @@ textarea {
   resize: none;
 }
 
-/* line 53, ../sass/main.scss */
+/* line 58, ../sass/main.scss */
 .buttons {
   position: absolute;
   right: 12px;
   bottom: 15px;
 }
-/* line 57, ../sass/main.scss */
+/* line 62, ../sass/main.scss */
 .buttons button {
   display: inline-block;
   vertical-align: middle;
@@ -81,7 +77,7 @@ textarea {
   margin-left: 0;
 }
 
-/* line 65, ../sass/main.scss */
+/* line 70, ../sass/main.scss */
 button {
   margin: 0 10px;
   padding: 0;
@@ -91,24 +87,24 @@ button {
   background: none;
   cursor: pointer;
 }
-/* line 73, ../sass/main.scss */
+/* line 78, ../sass/main.scss */
 button + button {
   margin-left: 10px;
 }
 
-/* line 78, ../sass/main.scss */
+/* line 83, ../sass/main.scss */
 .title {
   box-sizing: border-box;
   margin: 0 0 8px;
   font-size: 1.5rem;
 }
 
-/* line 84, ../sass/main.scss */
+/* line 89, ../sass/main.scss */
 .content {
   box-sizing: border-box;
 }
 
-/* line 88, ../sass/main.scss */
+/* line 93, ../sass/main.scss */
 .date {
   margin: 0;
   margin: 10px 0 0;
@@ -117,14 +113,14 @@ button + button {
   pointer: default;
 }
 
-/* line 96, ../sass/main.scss */
+/* line 101, ../sass/main.scss */
 .fa-file-archive-o {
   position: relative;
   top: -1px;
   font-size: 1.3rem;
 }
 
-/* line 102, ../sass/main.scss */
+/* line 107, ../sass/main.scss */
 .delete {
   opacity: 0.3;
   -moz-transition-property: all;
@@ -136,7 +132,31 @@ button + button {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
 }
-/* line 106, ../sass/main.scss */
+/* line 111, ../sass/main.scss */
 .delete:hover {
   opacity: 1;
+}
+
+/** Loading */
+/* line 118, ../sass/main.scss */
+.pace {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-pointer-events: none;
+}
+
+/* line 126, ../sass/main.scss */
+.pace .pace-progress {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fafafa;
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
 }

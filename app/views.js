@@ -11,47 +11,74 @@
         childViewContainer: 'div',
 
         initialize: function() {
+            var self = this;
+
             this.render();
+
+            $(window).on('resize', this.updateShapeShift);
+
+            $(document).dblclick(function() {
+                self.new();
+            });
         },
 
         onRender: function() {
-            this.$el.find('> div').addClass('masonry-wrapper');
+            console.log('onRender');
+
+            this.$el.find('> div').addClass('wrapper');
         },
 
         collectionEvents: {
-            'add': 'updateLayout',
-            'remove': 'updateLayout',
+            'new': 'initShapeShift',
+            'remove': 'updateShapeShift',
             'fetch': 'afterFetch'
         },
 
         afterFetch: function() {
-            $('.masonry-wrapper').masonry({
-                columnWidth: 0,
-                itemSelector: '.note'
-            });
+            var self = this;
 
-            window.masonry = $('.masonry-wrapper').data('masonry');
+            console.log('afterFetch');
+
+            self.initShapeShift();
         },
 
         events: {
             'click .new': 'new'
         },
 
-        updateLayout: function() {
-            if (window.masonry) {
-                window.masonry.reloadItems();
-                window.masonry.layout();
+        initShapeShift: function() {
+            var self = this;
+
+            console.log('initShapeShift');
+
+            window.shapeshift = $('.wrapper');
+            window.shapeshift.shapeshift({
+                gutterX: 10,
+                gutterY: 10,
+                paddingX: 0,
+                paddingY: 20
+            });
+        },
+
+        updateShapeShift: function() {
+            if (window.shapeshift) {
+                window.shapeshift.trigger('ss-rearrange');
             }
         },
 
         new: function() {
-            this.collection.add({
+            this.collection.create({
                 title: '',
                 content: '',
+                order: 9999,
                 createdDate: new Date().getTime(),
                 isEditing: false,
                 isArchived: false
             });
+
+            console.log('new');
+
+            this.collection.trigger('new');
         }
 
     });
@@ -68,22 +95,35 @@
 
         initialize: function() {
             var self = this;
-            this.on('render', function() {
-                window.setTimeout(function() {
-                    self.afterRender();
-                }, 1);
-            });
+
+            //this.on('render', function() {
+            window.setTimeout(function() {
+                self.afterRender();
+            }, 1);
+            //});
         },
 
         afterRender: function() {
             var self = this;
+
             this.$el.find('textarea').autosize({
                 append: '',
                 callback: this.updateLayout
-            }).on('input', function() {
+            });
+
+            this.$el.on('input', function() {
                 waitForFinalEvent(function() {
                     self.save();
-                }, 100, 'input');
+                }, 300, 'input');
+            });
+
+            window.shapeshift.on('ss-rearranged', function() {
+                console.log('save');
+                self.save();
+                waitForFinalEvent(function() {
+                    console.log('save:updateLayout');
+                    self.updateLayout();
+                }, 300, 'ss-rearranged');
             });
         },
 
@@ -96,19 +136,20 @@
         },
 
         updateLayout: function() {
-            if (window.masonry) {
-                window.masonry.reloadItems();
-                window.masonry.layout();
+            if (window.shapeshift) {
+                window.shapeshift.trigger('ss-rearrange');
             }
         },
 
         save: function() {
             var title = this.$('.title').val() || '...',
-                content = this.$('.content').val() || '...';
+                content = this.$('.content').val() || '...',
+                order = this.$el.index();
 
             this.model.save({
                 title: title,
                 content: content,
+                order: order,
                 isEditing: false
             });
         },

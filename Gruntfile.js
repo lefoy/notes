@@ -105,7 +105,7 @@ module.exports = function(grunt) {
         },
 
         exec: {
-            jsonServer: 'json-server data.json'
+            jsonServer: 'json-server db.json'
         },
 
         replace: {
